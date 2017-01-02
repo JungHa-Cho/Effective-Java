@@ -40,10 +40,10 @@ public class NutritionFacts_Builder {
 		calories		= builder.calories;
 		fat				= builder.fat;
 		sodium			= builder.sodium;
-		carbohydrate	= builder.carbohydrate;
-		}
-	}
+		carbohydrate	= builder.carbohydrate;	
+	}	
+}
 
 
 // 생성자 호출시
-// NutritionFacts_Builder cocaCola = new NutritionFacts_Builder.Builder(240, 8).calrories(100).sodium(35).carbohydrate(27)build();
+// NutritionFacts_Builder cocaCola = new NutritionFacts_Builder.Builder(240, 8).calrories(100).sodium(35).carbohydrate(27).build();
