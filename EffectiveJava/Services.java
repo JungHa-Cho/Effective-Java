@@ -3,27 +3,27 @@ package SecondChapter;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-// ¼­ºñ½º Á¦°øÀÚ ÀÎÅÍÆäÀÌ½º
+// ì„œë¹„ìŠ¤ ì œê³µì ì¸í„°í˜ì´ìŠ¤
 
-// ¼­ºñ½º ÀÎÅÍÆäÀÌ½º
+// ì„œë¹„ìŠ¤ ì¸í„°í˜ì´ìŠ¤
 interface Service {
-	// ¼­ºñ½º¿¡ °íÀ¯ÇÑ ¸Ş¼­µåµéÀÌ ÀÌ ÀÚ¸®¿¡ ¿Â´Ù
+	// ì„œë¹„ìŠ¤ì— ê³ ìœ í•œ ë©”ì„œë“œë“¤ì´ ì´ ìë¦¬ì— ì˜¨ë‹¤
 }
 
-// ¼­ºñ½º Á¦°øÀÚ ÀÎÅÍÆäÀÌ½º
+// ì„œë¹„ìŠ¤ ì œê³µì ì¸í„°í˜ì´ìŠ¤
 interface Provider {
 	Service newService();
 }
 
-// ¼­ºñ½º µî·Ï°ú Á¢±Ù¿¡ »ç¿ëµÇ´Â °´Ã¼ »ı¼º ºÒ°¡´É Å¬·¡½º
+// ì„œë¹„ìŠ¤ ë“±ë¡ê³¼ ì ‘ê·¼ì— ì‚¬ìš©ë˜ëŠ” ê°ì²´ ìƒì„± ë¶ˆê°€ëŠ¥ í´ë˜ìŠ¤
 public class Services {
-	private Services() { } // °´Ã¼ »ı¼º ¹æÁö ±ÔÄ¢
+	private Services() { } // ê°ì²´ ìƒì„± ë°©ì§€ ê·œì¹™
 
-	// ¼­ºñ½º ÀÌ¸§°ú ¼­ºñ½º °£ ´ëÀÀ°ü°è º¸°ü
+	// ì„œë¹„ìŠ¤ ì´ë¦„ê³¼ ì„œë¹„ìŠ¤ ê°„ ëŒ€ì‘ê´€ê³„ ë³´ê´€
 	private static final Map<String, Provider> providers = new ConcurrentHashMap<String, Provider>();
 	public static final String DEFAULT_PROVIDER_NAME = "<def>";
 
-	// Á¦°øÀÚ µî·Ï API
+	// ì œê³µì ë“±ë¡ API
 	public static void registerDefaultProvider(Provider p) {
 		registerProvider(DEFAULT_PROVIDER_NAME, p);
 	}
@@ -32,7 +32,52 @@ public class Services {
 		providers.put(name, p);
 	}
 
-	// ¼­ºñ½º Á¢±Ù API
+	// ì„œë¹„ìŠ¤ ì ‘ê·¼ API
+	public static Service newInstance() {
+		return newInstance(DEFAULT_PROVIDER_NAME);
+	}
+
+	public static Service newInstance(String name) {
+		Provider p = providers.get(name);
+		if (p == null)
+			throw new IllegalArgumentException("No provider registered with name: " + name);
+		return p.newService();
+	}
+}package SecondChapter;
+
+		import java.util.Map;
+		import java.util.concurrent.ConcurrentHashMap;
+
+// ì„œë¹„ìŠ¤ ì œê³µì ì¸í„°í˜ì´ìŠ¤
+
+// ì„œë¹„ìŠ¤ ì¸í„°í˜ì´ìŠ¤
+interface Service {
+	// ì„œë¹„ìŠ¤ì— ê³ ìœ í•œ ë©”ì„œë“œë“¤ì´ ì´ ìë¦¬ì— ì˜¨ë‹¤
+}
+
+// ì„œë¹„ìŠ¤ ì œê³µì ì¸í„°í˜ì´ìŠ¤
+interface Provider {
+	Service newService();
+}
+
+// ì„œë¹„ìŠ¤ ë“±ë¡ê³¼ ì ‘ê·¼ì— ì‚¬ìš©ë˜ëŠ” ê°ì²´ ìƒì„± ë¶ˆê°€ëŠ¥ í´ë˜ìŠ¤
+public class Services {
+	private Services() { } // ê°ì²´ ìƒì„± ë°©ì§€ ê·œì¹™
+
+	// ì„œë¹„ìŠ¤ ì´ë¦„ê³¼ ì„œë¹„ìŠ¤ ê°„ ëŒ€ì‘ê´€ê³„ ë³´ê´€
+	private static final Map<String, Provider> providers = new ConcurrentHashMap<String, Provider>();
+	public static final String DEFAULT_PROVIDER_NAME = "<def>";
+
+	// ì œê³µì ë“±ë¡ API
+	public static void registerDefaultProvider(Provider p) {
+		registerProvider(DEFAULT_PROVIDER_NAME, p);
+	}
+
+	public static void registerProvider(String name, Provider p) {
+		providers.put(name, p);
+	}
+
+	// ì„œë¹„ìŠ¤ ì ‘ê·¼ API
 	public static Service newInstance() {
 		return newInstance(DEFAULT_PROVIDER_NAME);
 	}

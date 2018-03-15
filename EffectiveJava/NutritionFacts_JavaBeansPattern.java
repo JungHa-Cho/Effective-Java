@@ -8,16 +8,16 @@ package SecondChapter;
 // cocaCola.setCarbohydrate(27);
 
 public class NutritionFacts_JavaBeansPattern {
-	private int servingSize = -1;		// ÇÊ¼ö : ±âº»°ª ¾øÀ½
-	private int servings 	= -1;		// ÇÊ¼ö
+	private int servingSize = -1;		// í•„ìˆ˜ : ê¸°ë³¸ê°’ ì—†ìŒ
+	private int servings 	= -1;		// í•„ìˆ˜
 	private int calories	=  0;
 	private int fat			=  0;
 	private int sodium		=  0;
 	private int carbohydrate=  0;
-	
+
 	public NutritionFacts_JavaBeansPattern(){ }
-	
-	// ¼³Á¤ÀÚ ( setter )
+
+	// ì„¤ì •ì ( setter )
 	public void setServingSize		(int val) { servingSize = val; }
 	public void setServings			(int val) { servings	= val; }
 	public void setCalories			(int val) { calories	= val; }

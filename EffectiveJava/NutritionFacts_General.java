@@ -3,13 +3,13 @@ package SecondChapter;
 // NutritionFacts_General cocaCola = new NutritionFacts_General(240, 8, 100, 3, 35, 27);
 
 public class NutritionFacts_General {
-	private final int servingSize;	// (mL)				ÇÊ¼ö
-	private final int servings;		// (per container)	ÇÊ¼ö
-	private final int calories;		//					¼±ÅÃ
-	private final int fat;			// (g)				¼±ÅÃ
-	private final int sodium;		// (mg)				¼±ÅÃ
-	private final int carbohydrate; // (g)				¼±ÅÃ
-	
+	private final int servingSize;	// (mL)				í•„ìˆ˜
+	private final int servings;		// (per container)	í•„ìˆ˜
+	private final int calories;		//					ì„ íƒ
+	private final int fat;			// (g)				ì„ íƒ
+	private final int sodium;		// (mg)				ì„ íƒ
+	private final int carbohydrate; // (g)				ì„ íƒ
+
 	public NutritionFacts_General(int servingSize, int servings){
 		this(servingSize, servings, 0);
 	}
@@ -17,15 +17,15 @@ public class NutritionFacts_General {
 	public NutritionFacts_General(int servingSize, int servings, int calories) {
 		this(servingSize, servings, calories, 0);
 	}
-	
+
 	public NutritionFacts_General(int servingSize, int servings, int calories, int fat){
 		this(servingSize, servings, calories, fat, 0);
 	}
-	
+
 	public NutritionFacts_General(int servingSize, int servings, int calories, int fat, int sodium){
 		this(servingSize, servings, calories, fat, sodium, 0);
 	}
-	
+
 	public NutritionFacts_General(int servingSize, int servings, int calories, int fat, int sodium, int carbohydrate){
 		this.servingSize = servingSize;
 		this.servings = servings;
